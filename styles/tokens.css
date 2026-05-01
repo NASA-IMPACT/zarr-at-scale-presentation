@@ -1,0 +1,40 @@
+/* Shared design tokens for poster and companion site.
+   Zarr-community palette, scaled type, consistent spacing. */
+
+:root {
+  /* Palette: Zarr brand + neutrals */
+  --color-zarr-primary: #1e293b;       /* deep slate, headlines */
+  --color-zarr-accent: #2563eb;        /* Zarr blue, links and accents */
+  --color-zarr-soft: #e0e7ff;          /* soft blue-violet, panel backgrounds */
+  --color-text: #0f172a;
+  --color-text-muted: #475569;
+  --color-bg: #ffffff;
+  --color-rule: #cbd5e1;
+  --color-figure-bg: #f1f5f9;
+
+  /* Type scale (poster + screen, in rem at 16px base) */
+  --type-tldr: 3.0rem;       /* poster TL;DR sentence */
+  --type-headline: 1.6rem;   /* panel headline (poster), h1 (site) */
+  --type-subhead: 1.1rem;    /* panel subhead, h2 (site) */
+  --type-body: 0.95rem;
+  --type-caption: 0.8rem;
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+
+  /* Stroke and radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --stroke: 1px;
+
+  /* Print-only sizes */
+  --poster-width: 1600mm;
+  --poster-height: 910mm;
+  --poster-margin: 12mm;
+  --poster-gutter: 10mm;
+}
