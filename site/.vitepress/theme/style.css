@@ -1,0 +1,8 @@
+@import '../../../styles/tokens.css';
+
+:root {
+  --vp-c-brand-1: var(--color-zarr-accent);
+  --vp-c-brand-2: var(--color-zarr-accent);
+  --vp-c-brand-3: var(--color-zarr-accent);
+  --vp-font-family-base: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}

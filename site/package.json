@@ -1,0 +1,17 @@
+{
+  "name": "egu26-site",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "sync:figures": "node scripts/sync-figures.mjs",
+    "predocs:dev": "npm run sync:figures",
+    "predocs:build": "npm run sync:figures",
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "vitepress": "1.6.4"
+  }
+}
