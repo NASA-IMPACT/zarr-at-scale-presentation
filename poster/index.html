@@ -2,19 +2,91 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Zarr at Scale — EGU 2026</title>
+  <title>Zarr at Scale, EGU 2026</title>
   <link rel="stylesheet" href="styles/poster.css">
 </head>
 <body>
   <div class="poster">
     <header class="poster-header">
-      <h1>Zarr at Scale (placeholder)</h1>
+      <div class="poster-header-left">
+        <p class="poster-meta">EGU26-15196 · ESSI2.2 · Mon 4 May · X4.95</p>
+        <h1 class="poster-title">Zarr at Scale</h1>
+        <p class="poster-authors">
+          Max Jones<sup>1</sup>, Joe Hamman<sup>2</sup>, Davis Bennett, Kyle Barron<sup>1</sup>, Justus Magin<sup>3</sup>
+        </p>
+        <p class="poster-affiliations">
+          <sup>1</sup>Development Seed · <sup>2</sup>Earthmover · <sup>3</sup>LOPS, Univ. Brest
+        </p>
+      </div>
+      <div class="poster-header-tldr">
+        <p class="poster-tldr-eyebrow">What's new in Zarr</p>
+        <p class="poster-tldr">Working with multi-terabyte Earth-science datasets is now routine.</p>
+      </div>
+      <div class="poster-header-right">
+        <img src="../figures/logos/zarr.svg" alt="Zarr" class="poster-logo-zarr">
+        <img src="../figures/qr/header.svg" alt="Scan for everything" class="poster-qr-everything">
+        <p class="poster-qr-label">All cards: zarr-developers.github.io/egu26-zarr-at-scale</p>
+      </div>
     </header>
+
     <main class="poster-grid">
-      <section class="panel" data-panel="1"><h2>Panel 1</h2></section>
-      <section class="panel" data-panel="2"><h2>Panel 2</h2></section>
-      <section class="panel" data-panel="3"><h2>Panel 3</h2></section>
-      <section class="panel" data-panel="4"><h2>Panel 4</h2></section>
+
+      <section class="panel" data-panel="1">
+        <p class="panel-eyebrow">1 · Sharding</p>
+        <h2 class="panel-headline">Many small chunks, few storage objects</h2>
+        <p class="panel-subhead">Random access of small chunks with the storage footprint of large ones.</p>
+        <figure class="panel-figure">
+          <img src="../figures/sharding.svg" alt="Traditional Zarr layout vs. sharded layout">
+        </figure>
+        <p class="panel-body">Sharding packs thousands of chunks into a single storage object. HPC users escape inode limits, cloud users escape per-object overhead. Readers fetch only the bytes they need via byte-range requests, so random access stays fast.</p>
+        <footer class="panel-footer">
+          <img class="panel-qr" src="../figures/qr/sharding.svg" alt="Sharding tutorial QR">
+          <p class="panel-url">zarr-developers.github.io/egu26-zarr-at-scale/sharding</p>
+        </footer>
+      </section>
+
+      <section class="panel" data-panel="2">
+        <p class="panel-eyebrow">2 · Virtualization</p>
+        <h2 class="panel-headline">Read archival files as one Zarr dataset</h2>
+        <p class="panel-subhead">No conversion, no copies. Point at NetCDF4, HDF5, GRIB, GeoTIFF.</p>
+        <figure class="panel-figure">
+          <img src="../figures/virtualization.svg" alt="Archival files into Icechunk manifest into xarray">
+        </figure>
+        <p class="panel-body">VirtualiZarr scans existing files and builds a virtual manifest pointing at them. Icechunk commits these manifests transactionally, so updates are atomic and rollbacks safe. xarray reads across the whole archive as a single Zarr dataset.</p>
+        <footer class="panel-footer">
+          <img class="panel-qr" src="../figures/qr/virtualization.svg" alt="Virtualization tutorial QR">
+          <p class="panel-url">zarr-developers.github.io/egu26-zarr-at-scale/virtualization</p>
+        </footer>
+      </section>
+
+      <section class="panel" data-panel="3">
+        <p class="panel-eyebrow">3 · Variable chunk grids</p>
+        <h2 class="panel-headline">One array, many chunk sizes</h2>
+        <p class="panel-subhead">Match chunk size to data density. Fine where it matters, coarse where it doesn't.</p>
+        <figure class="panel-figure">
+          <img src="../figures/variable-chunk-grids.svg" alt="Variable chunks along a time axis">
+        </figure>
+        <p class="panel-body">Just landed in zarr-python. A Zarr array can now have non-uniform chunks along any axis. Use fine chunks at recent timestamps and coarse chunks for older history. Faster reads where activity concentrates, less storage overall.</p>
+        <footer class="panel-footer">
+          <img class="panel-qr" src="../figures/qr/variable-chunk-grids.svg" alt="Variable chunk grids tutorial QR">
+          <p class="panel-url">zarr-developers.github.io/egu26-zarr-at-scale/variable-chunk-grids</p>
+        </footer>
+      </section>
+
+      <section class="panel" data-panel="4">
+        <p class="panel-eyebrow">4 · In-browser rendering</p>
+        <h2 class="panel-headline">Render multi-terabyte datasets in the browser</h2>
+        <p class="panel-subhead">Stream Zarr chunks straight to the GPU. No server, no pre-rendered tiles.</p>
+        <figure class="panel-figure">
+          <img src="../figures/in-browser.png" alt="deck.gl-raster Zarr visualization">
+        </figure>
+        <p class="panel-body">Zarrita.js reads Zarr chunks directly from a browser fetch. deck.gl-raster pushes them onto the GPU. Result: pan, zoom, and recolor a multi-terabyte dataset interactively, on a laptop, with no rendering pipeline behind you.</p>
+        <footer class="panel-footer">
+          <img class="panel-qr" src="../figures/qr/in-browser.svg" alt="In-browser tutorial QR">
+          <p class="panel-url">zarr-developers.github.io/egu26-zarr-at-scale/in-browser</p>
+        </footer>
+      </section>
+
     </main>
   </div>
 </body>
