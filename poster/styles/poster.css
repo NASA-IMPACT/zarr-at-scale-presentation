@@ -1,0 +1,45 @@
+@import '../../styles/tokens.css';
+
+@page {
+  size: 1600mm 910mm;
+  margin: 0;
+  marks: none;
+  bleed: 0;
+}
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+.poster {
+  width: 1600mm;
+  height: 910mm;
+  padding: var(--poster-margin);
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: var(--poster-gutter);
+}
+
+.poster-header {
+  background: var(--color-zarr-soft);
+  padding: var(--space-6);
+  border-radius: var(--radius-md);
+}
+
+.poster-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--poster-gutter);
+}
+
+.panel {
+  background: var(--color-bg);
+  border: var(--stroke) solid var(--color-rule);
+  padding: var(--space-6);
+  border-radius: var(--radius-md);
+}
