@@ -9,3 +9,5 @@ site/public/figures/
 # local working files (not part of the public repo)
 dev-docs/
 .superpowers/
+ 
+**/.ruff_cache
