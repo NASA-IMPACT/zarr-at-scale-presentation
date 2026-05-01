@@ -1,38 +1,46 @@
 /* Shared design tokens for poster and companion site.
-   Zarr-community palette, scaled type, consistent spacing. */
+   Zarr-community palette (pulled from zarr-developers.github.io). */
 
 :root {
-  /* Palette: Zarr brand + neutrals */
-  --color-zarr-primary: #1e293b;       /* deep slate, headlines */
-  --color-zarr-accent: #2563eb;        /* Zarr blue, links and accents */
-  --color-zarr-soft: #e0e7ff;          /* soft blue-violet, panel backgrounds */
-  --color-text: #0f172a;
-  --color-text-muted: #475569;
+  /* Zarr brand */
+  --color-zarr-primary: #952f7c;
+  --color-zarr-accent: #c93d80;
+  --color-zarr-soft: rgba(201, 61, 128, 0.14);
+  --color-zarr-gradient-1: #d97e6a;
+  --color-zarr-gradient-2: #c93d80;
+
+  /* Neutrals */
+  --color-text: #1a1a1a;
+  --color-text-muted: #555555;
   --color-bg: #ffffff;
-  --color-rule: #cbd5e1;
-  --color-figure-bg: #f1f5f9;
+  --color-rule: #d4d4d8;
+  --color-figure-bg: #fafafa;
 
-  /* Type scale (poster + screen, in rem at 16px base) */
-  --type-tldr: 3.0rem;       /* poster TL;DR sentence */
-  --type-headline: 1.6rem;   /* panel headline (poster), h1 (site) */
-  --type-subhead: 1.1rem;    /* panel subhead, h2 (site) */
-  --type-body: 0.95rem;
-  --type-caption: 0.8rem;
+  /* Poster type scale (mm-based for print readability) */
+  --poster-type-tldr: 35mm;
+  --poster-type-title: 28mm;
+  --poster-type-authors: 7mm;
+  --poster-type-affiliations: 4.5mm;
+  --poster-type-meta: 3.5mm;
+  --poster-type-eyebrow: 5mm;
+  --poster-type-headline: 14mm;
+  --poster-type-subhead: 7mm;
+  --poster-type-body: 4.5mm;
+  --poster-type-caption: 3mm;
 
-  /* Spacing scale */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
+  /* Poster spacing (mm-based) */
+  --poster-space-tight: 2mm;
+  --poster-space-snug: 4mm;
+  --poster-space-normal: 6mm;
+  --poster-space-wide: 10mm;
+  --poster-space-extra: 16mm;
 
   /* Stroke and radius */
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --stroke: 1px;
+  --radius-sm: 1mm;
+  --radius-md: 3mm;
+  --stroke: 0.4mm;
 
-  /* Print-only sizes */
+  /* Print canvas */
   --poster-width: 1600mm;
   --poster-height: 910mm;
   --poster-margin: 12mm;
