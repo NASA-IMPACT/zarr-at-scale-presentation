@@ -16,20 +16,9 @@ Sharding packs many chunks of a Zarr array into a single storage object. The sha
 
 ## How to use it
 
-```python
-import zarr
-import numpy as np
+Run with `uv run site/examples/sharding.py` — dependencies are pinned in the script's PEP 723 header.
 
-# A 1024 x 1024 array with 16x16 inner chunks grouped into 256x256 shards
-arr = zarr.create_array(
-    store='array.zarr',
-    shape=(1024, 1024),
-    chunks=(16, 16),       # the unit of access
-    shards=(256, 256),     # the unit of storage
-    dtype='float32',
-)
-arr[:] = np.random.random((1024, 1024)).astype('float32')
-```
+<<< @/examples/sharding.py{python}
 
 ## Learn more
 

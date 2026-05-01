@@ -16,23 +16,9 @@ VitualiZarr scans existing archival files and builds a *virtual* Zarr manifest t
 
 ## How to use it
 
-```python
-import virtualizarr
-import icechunk
-import xarray as xr
+Run with `uv run site/examples/virtualization.py`. The script lists a slice of NASA NEX-GDDP-CMIP6 from public S3 with `obspec-utils`, builds the virtual dataset with VirtualiZarr's v2 API, persists it in Icechunk, and reads it back.
 
-# Build a virtual dataset from a directory of NetCDF files
-vds = virtualizarr.open_virtual_mfdataset('s3://bucket/era5/*.nc')
-
-# Persist the manifest in an Icechunk repo
-repo = icechunk.Repository.create(icechunk.local_filesystem_storage('era5-icechunk'))
-session = repo.writable_session('main')
-vds.virtualize.to_icechunk(session.store)
-session.commit('Initial ERA5 virtual dataset')
-
-# Read it back as a normal Zarr dataset
-ds = xr.open_zarr(repo.readonly_session('main').store)
-```
+<<< @/examples/virtualization.py{python}
 
 ## Learn more
 

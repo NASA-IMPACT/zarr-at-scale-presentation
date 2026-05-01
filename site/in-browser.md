@@ -12,7 +12,7 @@ Zarrita.js reads Zarr chunks directly from the browser using `fetch`. deck.gl-ra
 - **Native cloud-native:** the data lives in Zarr on object storage, the renderer reads it directly
 - **Laptop-grade performance:** the GPU does the heavy lifting
 
-![deck.gl-raster Zarr screenshot](/figures/in-browser.png)
+![deck.gl-raster Zarr screenshot](/figures/deck-gl-aef.png)
 
 ## Live demo
 

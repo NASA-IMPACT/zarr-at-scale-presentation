@@ -16,20 +16,9 @@ A Zarr array can now have non-uniform chunks along any axis. Instead of every ch
 
 ## How to use it
 
-```python
-import zarr
+Run with `uv run site/examples/variable-chunk-grids.py`. Rectilinear chunks are experimental in zarr 3.2.0 and must be enabled via `zarr.config`.
 
-# 1D array with variable chunks along axis 0:
-# coarse chunks for older data, fine chunks for recent
-arr = zarr.create_array(
-    store='timeseries.zarr',
-    shape=(8760,),                                  # one year, hourly
-    chunks=(2048, 1024, 512, 256, 128, 64, 32),     # variable chunks
-    dtype='float32',
-)
-```
-
-See the [zarr-python release notes](https://zarr.readthedocs.io/en/stable/release-notes.html) for the exact API once shipped.
+<<< @/examples/variable-chunk-grids.py{python}
 
 ## Learn more
 
