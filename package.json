@@ -1,0 +1,17 @@
+{
+  "name": "egu26-zarr-at-scale",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "workspaces": ["poster", "site"],
+  "scripts": {
+    "poster:build": "npm run build -w poster",
+    "poster:preview": "npm run preview -w poster",
+    "site:dev": "npm run docs:dev -w site",
+    "site:build": "npm run docs:build -w site",
+    "site:preview": "npm run docs:preview -w site"
+  },
+  "overrides": {
+    "esbuild": "0.25.0"
+  }
+}

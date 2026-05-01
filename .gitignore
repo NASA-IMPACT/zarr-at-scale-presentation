@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.vitepress/cache/
+.vitepress/dist/
+poster/dist/
+site/public/figures/
+*.log
+.DS_Store
+
+# local working files (not part of the public repo)
+dev-docs/
+.superpowers/
