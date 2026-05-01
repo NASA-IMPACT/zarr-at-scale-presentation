@@ -1,8 +1,7 @@
 node_modules/
 dist/
-.vitepress/cache/
-.vitepress/dist/
-poster/dist/
+**/.vitepress/cache/
+**/.vitepress/dist/
 site/public/figures/
 *.log
 .DS_Store
