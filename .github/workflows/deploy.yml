@@ -22,8 +22,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-      - run: npm ci
+      - name: Install (regenerate lockfile to work around npm/cli#4828)
+        run: |
+          rm -f package-lock.json
+          npm install
       - run: npm run site:build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
