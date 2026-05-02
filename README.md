@@ -21,16 +21,15 @@ The site is deployed to <https://zarr-at-scale.maxjones.dev/> on push to `main`.
 
 ### Poster PDF
 
-The poster is a single HTML page styled at 1600 × 910 mm via CSS `@page`. Open `poster/index.html` in Chrome, then `Cmd+P` and "Save as PDF". The print dialog picks up the page size from CSS automatically.
-
-For a scripted export:
+The poster is a single HTML page styled at 1600 × 910 mm via CSS `@page`. Render to PDF with Playwright:
 
 ```sh
-"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
-  --headless --disable-gpu --no-pdf-header-footer \
-  --print-to-pdf=poster/dist/poster.pdf \
-  poster/index.html
+npm install                       # first run only — pulls in playwright
+npx playwright install chromium   # first run only — downloads bundled Chromium
+npm run poster:pdf                # writes site/public/poster.pdf (served at /poster.pdf)
 ```
+
+The browser print dialog (`Cmd+P` → "Save as PDF") also works now that `print-color-adjust: exact` is set, but the Playwright command honors the `@page` size exactly and is reproducible across machines.
 
 ## Citation
 
