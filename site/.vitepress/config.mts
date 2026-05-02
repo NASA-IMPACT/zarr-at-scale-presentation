@@ -25,7 +25,7 @@ export default defineConfig({
       }
     ],
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/maxrjones/egu26-zarr-at-scale' }
+      { icon: 'github', link: 'https://github.com/maxrjones/zarr-at-scale-presentation' }
     ],
     footer: {
       message: 'EGU 2026 · ESSI2.2 · EGU26-15196',
