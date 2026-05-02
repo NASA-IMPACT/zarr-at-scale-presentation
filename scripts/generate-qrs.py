@@ -19,7 +19,7 @@ TARGETS = {
     "virtualization":       f"{BASE}/virtualization",
     "variable-chunk-grids": f"{BASE}/variable-chunk-grids",
     "in-browser":           f"{BASE}/in-browser",
-    "geozarr-spec":         "https://github.com/zarr-developers/geozarr-spec",
+    "geozarr-spec":         "https://geozarr.org",
 }
 
 OUT_DIR = Path(__file__).parent.parent / "figures" / "qr"
