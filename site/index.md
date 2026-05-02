@@ -37,7 +37,7 @@ features:
 
 This site is the companion to the EGU 2026 poster **Zarr at scale: virtualization, sharding, and performance optimizations for Earth science data** (EGU26-15196), presented in session ESSI2.2 on Monday 4 May 2026.
 
-[Download the poster (PDF)](/poster.pdf) · [Abstract](https://doi.org/10.5194/egusphere-egu26-15196) · [Source on GitHub](https://github.com/zarr-developers/egu26-zarr-at-scale)
+[Download the poster (PDF)](/poster.pdf) · [Abstract](https://doi.org/10.5194/egusphere-egu26-15196) · [Source on GitHub](https://github.com/maxrjones/egu26-zarr-at-scale)
 
 ## See also
 

@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: 'Zarr at Scale',
   description: "What's new in Zarr: working with multi-terabyte Earth-science datasets is now routine.",
-  base: '/egu26-zarr-at-scale/',
+  base: '/',
   cleanUrls: true,
   themeConfig: {
     nav: [
@@ -25,7 +25,7 @@ export default defineConfig({
       }
     ],
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/zarr-developers/egu26-zarr-at-scale' }
+      { icon: 'github', link: 'https://github.com/maxrjones/egu26-zarr-at-scale' }
     ],
     footer: {
       message: 'EGU 2026 · ESSI2.2 · EGU26-15196',

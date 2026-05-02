@@ -17,7 +17,7 @@ npm run site:dev       # local dev server
 npm run site:build     # builds site/.vitepress/dist/
 ```
 
-The site is deployed to <https://zarr-developers.github.io/egu26-zarr-at-scale/> on push to `main`.
+The site is deployed to <https://zarr-at-scale.maxjones.dev/> on push to `main`.
 
 ### Poster PDF
 
