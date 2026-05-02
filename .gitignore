@@ -3,6 +3,7 @@ dist/
 **/.vitepress/cache/
 **/.vitepress/dist/
 site/public/figures/
+site/public/poster/
 *.log
 .DS_Store
 

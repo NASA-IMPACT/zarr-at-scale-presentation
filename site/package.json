@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "sync:figures": "node scripts/sync-figures.mjs",
-    "predocs:dev": "npm run sync:figures",
-    "predocs:build": "npm run sync:figures",
+    "sync:poster": "node scripts/sync-poster.mjs",
+    "predocs:dev": "npm run sync:figures && npm run sync:poster",
+    "predocs:build": "npm run sync:figures && npm run sync:poster",
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview"
