@@ -30,7 +30,7 @@
 
   .scale-wrap {
     width: 1600mm; height: 910mm;
-    transform-origin: top center;
+    transform-origin: center center;
     background: var(--bg);
     font-family: 'DM Sans', sans-serif;
     font-size: 4mm; color: var(--ink);
@@ -310,6 +310,7 @@
       display: block !important; overflow: hidden !important;
       background: var(--bg) !important;
     }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
     .scale-wrap { transform: none !important; }
   }
 
@@ -559,7 +560,6 @@ zarr.create_array(
     const sy = window.innerHeight / POSTER_H_PX;
     const s  = Math.min(sx, sy);
     wrap.style.transform = `scale(${s})`;
-    document.body.style.alignItems = (POSTER_H_PX * s < window.innerHeight) ? 'center' : 'flex-start';
   }
   scaleToFit();
   window.addEventListener('resize', scaleToFit);
