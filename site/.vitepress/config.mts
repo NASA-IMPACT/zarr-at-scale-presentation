@@ -11,7 +11,8 @@ export default defineConfig({
       { text: 'Sharding', link: '/sharding' },
       { text: 'Virtualization', link: '/virtualization' },
       { text: 'Variable chunks', link: '/variable-chunk-grids' },
-      { text: 'In-browser', link: '/in-browser' }
+      { text: 'In-browser', link: '/in-browser' },
+      { text: 'GeoZarr', link: '/geozarr' }
     ],
     sidebar: [
       {
@@ -20,7 +21,8 @@ export default defineConfig({
           { text: 'Sharding', link: '/sharding' },
           { text: 'Virtualization', link: '/virtualization' },
           { text: 'Variable chunk grids', link: '/variable-chunk-grids' },
-          { text: 'In-browser rendering', link: '/in-browser' }
+          { text: 'In-browser rendering', link: '/in-browser' },
+          { text: 'GeoZarr', link: '/geozarr' }
         ]
       }
     ],

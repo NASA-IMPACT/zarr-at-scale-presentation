@@ -17,6 +17,9 @@ hero:
     - theme: alt
       text: In-browser rendering
       link: /in-browser
+    - theme: alt
+      text: GeoZarr
+      link: /geozarr
 
 features:
   - title: Sharding
@@ -31,6 +34,9 @@ features:
   - title: In-browser rendering
     details: Stream Zarr chunks straight to the GPU with Zarrita.js and deck.gl-zarr. No server, no pre-rendered tiles.
     link: /in-browser
+  - title: GeoZarr
+    details: Open conventions for geospatial Zarr. CRS, spatial transforms, multiscale pyramids, on the OGC standards track.
+    link: /geozarr
 ---
 
 ## EGU 2026 poster
@@ -41,6 +47,7 @@ This site is the companion to the EGU 2026 poster **Zarr at scale: virtualizatio
 
 ## See also
 
+- **GeoZarr:** open conventions for geospatial Zarr (CRS, transforms, pyramids), on the OGC standards track. See the [GeoZarr reference card](/geozarr).
 - **Custom codecs:** Zarr V3 supports user-defined compression and pre-filter codecs. See the [Zarr extensions registry](https://github.com/zarr-developers/zarr-extensions/tree/main/codecs).
 - **Custom data types:** Zarr V3 supports user-defined data types. See the [data types registry](https://github.com/zarr-developers/zarr-extensions/tree/main/data-types).
 
