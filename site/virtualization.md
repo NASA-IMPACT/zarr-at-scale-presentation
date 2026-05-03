@@ -4,7 +4,7 @@
 
 ## What it does
 
-VitualiZarr scans existing archival files and builds a *virtual* Zarr manifest that records where every chunk lives inside those files. Icechunk stores and version-controls the manifest with transactional commits. xarray then reads across the whole archive as if it were a single Zarr dataset, with no copying or rewriting of the original data.
+VirtualiZarr scans existing archival files and builds a *virtual* Zarr manifest that records where every chunk lives inside those files. Icechunk stores and version-controls the manifest with transactional commits. xarray then reads across the whole archive as if it were a single Zarr dataset, with no copying or rewriting of the original data.
 
 ## Why it matters
 
