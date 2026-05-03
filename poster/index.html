@@ -78,11 +78,26 @@
   .authors { font-size: 5mm; color: var(--mid); line-height: 1.45; }
   .authors strong { color: var(--ink); }
   .header-right {
-    display: flex; flex-direction: column; align-items: flex-end;
-    gap: 6mm; padding-bottom: 2mm;
+    display: flex; flex-direction: row-reverse; align-items: center;
+    gap: 14mm; padding-bottom: 2mm;
   }
   .logo-row { display: flex; gap: 10mm; align-items: center; }
   .logo-row img { height: 120mm; width: auto; }
+  .header-qr {
+    display: flex; align-items: center; gap: 5mm;
+  }
+  .header-qr img {
+    width: 38mm; height: 38mm; flex: none;
+    filter: invert(1) brightness(0.667) invert(1);
+  }
+  .header-qr .qr-label {
+    font-family: 'DM Mono', monospace; font-size: 4mm;
+    color: var(--ink); line-height: 1.35;
+    text-align: right;
+  }
+  .header-qr .qr-label strong {
+    font-weight: 600; font-size: 4.4mm;
+  }
 
   /* ── BODY ── */
   .body {
@@ -341,6 +356,10 @@
       <div class="logo-row">
         <img src="../figures/logos/zarr-pink-horizontal.svg" alt="Zarr">
       </div>
+      <div class="header-qr">
+        <div class="qr-label"><strong>Scan for poster &amp; companion site</strong><br>zarr-at-scale.maxjones.dev</div>
+        <img src="../figures/qr/header.svg" alt="Companion site QR">
+      </div>
     </div>
   </header>
 
@@ -356,7 +375,7 @@
       <div class="subhead">Random access of small chunks with the storage footprint of large ones.</div>
       <div class="sys-body">
         <div class="sys-text">
-          <p>Sharding packs thousands of chunks into a single storage object. Readers fetch only the bytes they need via byte-range requests, so random access stays fast.</p>
+          <p>Sharding can pack thousands of chunks into a single storage object. Readers fetch only the bytes they need via byte-range requests, so random access stays fast.</p>
           <div class="why-list">
             <div class="why-item"><span><strong>HPC filesystems:</strong> escape per-file inode pressure</span></div>
             <div class="why-item"><span><strong>Cloud object stores:</strong> skip per-object request overhead</span></div>
@@ -389,14 +408,15 @@ zarr.create_array(
         <span class="topic-name">Virtualization</span>
       </div>
       <h2>Read archival files as one Zarr dataset</h2>
-      <div class="subhead">No conversion, no copies. Point at NetCDF4, HDF5, GRIB, GeoTIFF.</div>
+      <div class="subhead">No conversion, no copies. Point at NetCDF4, HDF5, GRIB, GeoTIFF, and more.</div>
       <div class="sys-body">
         <div class="sys-text">
-          <p>VirtualiZarr scans existing files and builds a virtual manifest. Icechunk commits these manifests transactionally. xarray reads across the whole archive as a single Zarr dataset.</p>
+          <p>VirtualiZarr scans existing files and builds a virtual manifest. Icechunk commits these manifests transactionally. Read across the whole archive as a single Zarr dataset.</p>
           <div class="why-list">
             <div class="why-item"><span><strong>No conversion:</strong> expose terabytes of NetCDF/HDF5 without rewriting</span></div>
             <div class="why-item"><span><strong>Atomic updates:</strong> safe under concurrent writes via Icechunk</span></div>
             <div class="why-item"><span><strong>Format-agnostic:</strong> NetCDF4, HDF5, GRIB, GeoTIFF, FITS</span></div>
+            <div class="why-item"><span><strong>Publish once, read everywhere:</strong> producers ship a manifest alongside the archive — every downstream user gets cloud-native access</span></div>
           </div>
 <div class="code-snippet"><span class="kw">import</span> virtualizarr <span class="kw">as</span> vz
 <span class="kw">import</span> xarray <span class="kw">as</span> xr
@@ -434,6 +454,7 @@ ds = xr.open_zarr(session.store)</div>
           <div class="why-list">
             <div class="why-item"><span><strong>Match density:</strong> fine chunks where data is dense, coarse elsewhere</span></div>
             <div class="why-item"><span><strong>Time archives:</strong> fine for recent observations, coarse for history</span></div>
+            <div class="why-item"><span><strong>Storage optimization:</strong> atmospheric levels, ocean depths, healpix grids, and other irregular axes</span></div>
             <div class="why-item"><span><strong>Less waste:</strong> no padding sparse regions to fit a uniform grid</span></div>
           </div>
 <div class="code-snippet"><span class="kw">import</span> zarr
@@ -441,9 +462,9 @@ ds = xr.open_zarr(session.store)</div>
 zarr.config.set({<span class="str">"array.rectilinear_chunks"</span>: <span class="kw">True</span>})
 
 zarr.create_array(
-    store=<span class="str">"timeseries.zarr"</span>,
-    shape=(<span class="kw">8760</span>,),                                  <span class="com"># one year, hourly</span>
-    chunks=[(<span class="kw">4096</span>, <span class="kw">2048</span>, <span class="kw">1024</span>, <span class="kw">512</span>, <span class="kw">512</span>, <span class="kw">256</span>, <span class="kw">256</span>, <span class="kw">56</span>)],
+    store=<span class="str">"era5.zarr"</span>,
+    shape=(<span class="kw">745_440</span>, <span class="kw">37</span>, <span class="kw">721</span>, <span class="kw">1440</span>),               <span class="com"># (time, level, lat, lon)</span>
+    chunks=[<span class="kw">24</span>, (<span class="kw">8</span>, <span class="kw">5</span>, <span class="kw">4</span>, <span class="kw">5</span>, <span class="kw">15</span>), <span class="kw">144</span>, <span class="kw">360</span>],      <span class="com"># ΔP = 200 hPa</span>
     dtype=<span class="str">"float32"</span>,
 )</div>
           <div class="card-foot">
@@ -452,7 +473,7 @@ zarr.create_array(
           </div>
         </div>
         <div class="sys-figure">
-          <img src="../figures/variable-chunk-grids.svg" alt="Variable chunks along a time axis">
+          <img src="../figures/variable-chunk-grids.svg" alt="Variable chunks along the ERA5 pressure-level axis">
         </div>
       </div>
     </div>
@@ -467,11 +488,12 @@ zarr.create_array(
       <div class="subhead">Stream Zarr chunks straight to the GPU. No server, no pre-rendered tiles.</div>
       <div class="sys-body">
         <div class="sys-text">
-          <p>Zarrita.js reads Zarr chunks directly from a browser fetch. deck.gl-raster pushes them onto the GPU. Pan, zoom, recolor a multi-terabyte dataset interactively, on a laptop.</p>
+          <p>Zarrita.js reads Zarr chunks directly from a browser fetch. deck.gl-zarr pushes them onto the GPU. Pan, zoom, recolor a multi-terabyte dataset interactively, on a laptop.</p>
           <div class="why-list">
             <div class="why-item"><span><strong>No tile pipeline:</strong> skip pre-render, tile cache, tile server</span></div>
             <div class="why-item"><span><strong>Cloud-native:</strong> data lives in Zarr on object storage, read directly</span></div>
             <div class="why-item"><span><strong>GPU-accelerated:</strong> pan, zoom, recolor at interactive rates</span></div>
+            <div class="why-item"><span><strong>Client-side compute:</strong> recolor, band math, value readout — no refetch</span></div>
           </div>
 <div class="code-snippet"><span class="kw">import</span> * <span class="kw">as</span> zarr <span class="kw">from</span> <span class="str">"zarrita"</span>
 <span class="kw">import</span> { ZarrLayer } <span class="kw">from</span> <span class="str">"@developmentseed/deck.gl-zarr"</span>
@@ -502,17 +524,17 @@ zarr.create_array(
       <h2>GeoZarr: open conventions for geospatial Zarr</h2>
       <p>Composable conventions for CRS, spatial transforms, pyramids, and climate metadata. OGC standardization in progress, target summer 2026.</p>
       <div class="strip-tools-inline">
-        Try it: <strong>inspect.geozarr.org</strong> · <strong>geozarr-toolkit</strong> · <strong>geozarr-examples</strong>
+        Browse real GeoZarr datasets: <strong>inspect.geozarr.org</strong>
       </div>
     </div>
     <div class="strip-conventions">
       <div class="conv">
-        <div class="conv-tag">proj:</div>
+        <div class="conv-tag">proj</div>
         <div class="conv-name">CRS</div>
         <div class="conv-desc">EPSG, WKT2, PROJJSON</div>
       </div>
       <div class="conv">
-        <div class="conv-tag">spatial:</div>
+        <div class="conv-tag">spatial</div>
         <div class="conv-name">Transforms</div>
         <div class="conv-desc">Affine, grid registration</div>
       </div>
@@ -523,8 +545,8 @@ zarr.create_array(
       </div>
       <div class="conv">
         <div class="conv-tag">CF</div>
-        <div class="conv-name">Metadata</div>
-        <div class="conv-desc">Climate & Forecast (NetCDF compat)</div>
+        <div class="conv-name">Data model + metadata</div>
+        <div class="conv-desc">NetCDF structure + Climate & Forecast vocabulary</div>
       </div>
     </div>
     <div class="strip-cta">
@@ -538,12 +560,6 @@ zarr.create_array(
       <strong>Jones, Hamman, Bennett, Barron, Magin</strong> · EGU26-15196 · CC BY 4.0<br>
       max@developmentseed.org · doi.org/10.5194/egusphere-egu26-15196<br>
       Zarr is a trademark of NumFOCUS.
-    </div>
-    <div class="footer-qr-zone">
-      <div class="qr-block">
-        <img src="../figures/qr/header.svg" alt="Companion site QR">
-        <div class="qr-label"><strong>Companion site</strong><br>zarr-at-scale.maxjones.dev</div>
-      </div>
     </div>
   </footer>
 
