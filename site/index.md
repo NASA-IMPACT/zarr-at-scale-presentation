@@ -29,7 +29,7 @@ features:
     details: One Zarr array, many chunk sizes. Just landed in zarr-python.
     link: /variable-chunk-grids
   - title: In-browser rendering
-    details: Stream Zarr chunks straight to the GPU with Zarrita.js and deck.gl-raster. No server, no pre-rendered tiles.
+    details: Stream Zarr chunks straight to the GPU with Zarrita.js and deck.gl-zarr. No server, no pre-rendered tiles.
     link: /in-browser
 ---
 
