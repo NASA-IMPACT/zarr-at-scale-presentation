@@ -37,7 +37,7 @@ import { ZarrLayer } from '@developmentseed/deck.gl-zarr'
 import * as zarr from 'zarrita'
 
 const store = new zarr.FetchStore('https://example.com/dataset.zarr')
-const node = await zarr.open(store, { kind: 'group' })
+const node = await zarr.open.v3(store, { kind: 'group' })
 
 const layer = new ZarrLayer({
   id: 'zarr-layer',
