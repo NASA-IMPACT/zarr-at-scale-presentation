@@ -6,20 +6,21 @@ hero:
   tagline: "Working with multi-terabyte Earth-science datasets is now routine."
   actions:
     - theme: brand
-      text: Sharding
-      link: /sharding
+      text: View the poster
+      link: /poster/
+      target: _blank
+      rel: noopener
     - theme: alt
-      text: Virtualization
-      link: /virtualization
+      text: Download as PDF
+      link: /poster.pdf
+      target: _blank
+      rel: noopener
     - theme: alt
-      text: Variable chunk grids
-      link: /variable-chunk-grids
+      text: Read the abstract
+      link: https://doi.org/10.5194/egusphere-egu26-15196
     - theme: alt
-      text: In-browser rendering
-      link: /in-browser
-    - theme: alt
-      text: GeoZarr
-      link: /geozarr
+      text: View on GitHub
+      link: https://github.com/maxrjones/zarr-at-scale-presentation
 
 features:
   - title: Sharding
@@ -43,11 +44,8 @@ features:
 
 This site is the companion to the EGU 2026 poster **Zarr at scale: virtualization, sharding, and performance optimizations for Earth science data** (EGU26-15196), presented in session ESSI2.2 on Monday 4 May 2026.
 
-<a href="/poster/" target="_blank" rel="noopener">View the poster (HTML)</a> · <a href="/poster.pdf" target="_blank" rel="noopener">Download as PDF</a> · [Abstract](https://doi.org/10.5194/egusphere-egu26-15196) · [Source on GitHub](https://github.com/maxrjones/zarr-at-scale-presentation)
-
 ## See also
 
-- **GeoZarr:** open conventions for geospatial Zarr (CRS, transforms, pyramids), on the OGC standards track. See the [GeoZarr reference card](/geozarr).
 - **Custom codecs:** Zarr V3 supports user-defined compression and pre-filter codecs. See the [Zarr extensions registry](https://github.com/zarr-developers/zarr-extensions/tree/main/codecs).
 - **Custom data types:** Zarr V3 supports user-defined data types. See the [data types registry](https://github.com/zarr-developers/zarr-extensions/tree/main/data-types).
 
