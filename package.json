@@ -8,7 +8,8 @@
     "site:dev": "npm run docs:dev -w site",
     "site:build": "npm run docs:build -w site",
     "site:preview": "npm run docs:preview -w site",
-    "poster:pdf": "node scripts/build-pdf.mjs"
+    "poster:pdf": "node scripts/build-pdf.mjs",
+    "capture:demos": "node scripts/capture-demos.mjs"
   },
   "devDependencies": {
     "playwright": "1.59.1"
