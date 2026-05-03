@@ -463,7 +463,7 @@ zarr.config.set({<span class="str">"array.rectilinear_chunks"</span>: <span clas
 
 zarr.create_array(
     store=<span class="str">"era5.zarr"</span>,
-    shape=(<span class="kw">745_440</span>, <span class="kw">37</span>, <span class="kw">721</span>, <span class="kw">1440</span>),               <span class="com"># (time, level, lat, lon)</span>
+    shape=(<span class="kw">745440</span>, <span class="kw">37</span>, <span class="kw">721</span>, <span class="kw">1440</span>),               <span class="com"># (time, level, lat, lon)</span>
     chunks=[<span class="kw">24</span>, (<span class="kw">8</span>, <span class="kw">5</span>, <span class="kw">4</span>, <span class="kw">5</span>, <span class="kw">15</span>), <span class="kw">144</span>, <span class="kw">360</span>],      <span class="com"># ΔP = 200 hPa</span>
     dtype=<span class="str">"float32"</span>,
 )</div>
