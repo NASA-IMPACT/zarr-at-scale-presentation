@@ -1,71 +1,158 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" font-family="ui-sans-serif, system-ui, sans-serif">
-  <!-- Title -->
-  <text x="360" y="32" text-anchor="middle" font-size="13" fill="#4a4440" font-style="italic">ERA5-style time archive</text>
+  <!-- Title (matching the TRADITIONAL / SHARDED label style from sharding.svg) -->
+  <text x="360" y="22" text-anchor="middle" font-size="13" fill="#4a4440" font-weight="700" letter-spacing="0.08em">ERA5</text>
 
-  <!-- Top labels -->
-  <text x="40" y="65" font-size="11" fill="#9a9490" font-weight="700" letter-spacing="0.08em">COARSE</text>
-  <text x="680" y="65" text-anchor="end" font-size="11" fill="#c93d80" font-weight="700" letter-spacing="0.08em">FINE</text>
+  <!--
+    Cube geometry (after the group transform shifts everything down 24 px):
+      Front face: x=240..520, y=74..274  (group y50..250 + 24 shift)
+      Depth offset: (+60, -42)
+    Cells along the pressure-level axis: 37 of equal height (200/37 ≈ 5.405 px each).
+    Chunk boundaries (cumulative cells: 8, 13, 17, 22) on the front face (in group coords):
+      y =  93.243   (after 8 cells)
+      y = 120.270   (after 13)
+      y = 141.892   (after 17)
+      y = 168.919   (after 22)
+    Z-chunks (3 along depth) at f = 1/3, 2/3:
+      f = 1/3 → x = 540, top y = 36
+      f = 2/3 → x = 560, top y = 22
+  -->
 
-  <!-- Variable-width chunks -->
-  <g transform="translate(40, 80)" stroke="#1a1614" stroke-width="1">
-    <!-- 1980-2000: very wide -->
-    <rect x="0"   y="0"  width="180" height="60" fill="#f7f4ef"/>
-    <text x="90"  y="35" text-anchor="middle" font-size="11" fill="#4a4440" font-family="ui-monospace, monospace">1980–2000</text>
+  <g transform="translate(0, 24)">
+  <!-- TOP FACE -->
+  <path d="M240 50 L520 50 L580 8 L300 8 Z"
+        fill="#fbe7f0" stroke="#7a1f64" stroke-width="1.2"/>
+  <!-- top-face lat subdivisions (faint, matching virtualization cube) -->
+  <line x1="333.3" y1="50" x2="393.3" y2="8" stroke="#7a1f64" stroke-width="0.5" opacity="0.35"/>
+  <line x1="426.7" y1="50" x2="486.7" y2="8" stroke="#7a1f64" stroke-width="0.5" opacity="0.35"/>
+  <!-- Z-chunk boundaries on top face (bold) -->
+  <line x1="260" y1="36" x2="540" y2="36" stroke="#7a1f64" stroke-width="1.2"/>
+  <line x1="280" y1="22" x2="560" y2="22" stroke="#7a1f64" stroke-width="1.2"/>
 
-    <!-- 2000-2010 -->
-    <rect x="180" y="0"  width="120" height="60" fill="#f7f4ef"/>
-    <text x="240" y="35" text-anchor="middle" font-size="11" fill="#4a4440" font-family="ui-monospace, monospace">2000–10</text>
+  <!-- RIGHT FACE: 5 stacked parallelograms (one per pressure-level slab), uniform light fill -->
+  <path d="M520 50      L580 8      L580 51.243  L520 93.243  Z" fill="#f3aac8" stroke="#7a1f64" stroke-width="1.2"/>
+  <path d="M520 93.243  L580 51.243 L580 78.270  L520 120.270 Z" fill="#f3aac8" stroke="#7a1f64" stroke-width="1.2"/>
+  <path d="M520 120.270 L580 78.270 L580 99.892  L520 141.892 Z" fill="#f3aac8" stroke="#7a1f64" stroke-width="1.2"/>
+  <path d="M520 141.892 L580 99.892 L580 126.919 L520 168.919 Z" fill="#f3aac8" stroke="#7a1f64" stroke-width="1.2"/>
+  <path d="M520 168.919 L580 126.919 L580 208    L520 250     Z" fill="#f3aac8" stroke="#7a1f64" stroke-width="1.2"/>
 
-    <!-- 2010-2020 -->
-    <rect x="300" y="0"  width="80"  height="60" fill="#fce7f3" opacity="0.6"/>
-    <text x="340" y="35" text-anchor="middle" font-size="11" fill="#9d174d" font-family="ui-monospace, monospace">2010–20</text>
-
-    <!-- 2021-2023 yearly -->
-    <rect x="380" y="0"  width="48"  height="60" fill="#fbcfe8" opacity="0.85"/>
-    <text x="404" y="35" text-anchor="middle" font-size="10" fill="#9d174d" font-family="ui-monospace, monospace">2021</text>
-    <rect x="428" y="0"  width="48"  height="60" fill="#fbcfe8" opacity="0.85"/>
-    <text x="452" y="35" text-anchor="middle" font-size="10" fill="#9d174d" font-family="ui-monospace, monospace">2022</text>
-    <rect x="476" y="0"  width="48"  height="60" fill="#fbcfe8" opacity="0.85"/>
-    <text x="500" y="35" text-anchor="middle" font-size="10" fill="#9d174d" font-family="ui-monospace, monospace">2023</text>
-
-    <!-- 2024-2026 monthly (narrow) -->
-    <rect x="524" y="0"  width="20"  height="60" fill="#c93d80" fill-opacity="0.65"/>
-    <rect x="544" y="0"  width="20"  height="60" fill="#c93d80" fill-opacity="0.65"/>
-    <rect x="564" y="0"  width="20"  height="60" fill="#c93d80" fill-opacity="0.65"/>
-    <rect x="584" y="0"  width="20"  height="60" fill="#c93d80" fill-opacity="0.65"/>
-    <rect x="604" y="0"  width="20"  height="60" fill="#c93d80" fill-opacity="0.65"/>
-    <rect x="624" y="0"  width="20"  height="60" fill="#c93d80" fill-opacity="0.65"/>
+  <!-- Right-face cell boundaries (light): 32 lines at internal pressure-cell boundaries -->
+  <g stroke="#7a1f64" stroke-width="0.5" opacity="0.4">
+    <!-- Slab 1 internal cells (7 lines) -->
+    <line x1="520" y1="55.405"  x2="580" y2="13.405"/>
+    <line x1="520" y1="60.811"  x2="580" y2="18.811"/>
+    <line x1="520" y1="66.216"  x2="580" y2="24.216"/>
+    <line x1="520" y1="71.622"  x2="580" y2="29.622"/>
+    <line x1="520" y1="77.027"  x2="580" y2="35.027"/>
+    <line x1="520" y1="82.432"  x2="580" y2="40.432"/>
+    <line x1="520" y1="87.838"  x2="580" y2="45.838"/>
+    <!-- Slab 2 internal cells (4 lines) -->
+    <line x1="520" y1="98.649"  x2="580" y2="56.649"/>
+    <line x1="520" y1="104.054" x2="580" y2="62.054"/>
+    <line x1="520" y1="109.459" x2="580" y2="67.459"/>
+    <line x1="520" y1="114.865" x2="580" y2="72.865"/>
+    <!-- Slab 3 internal cells (3 lines) -->
+    <line x1="520" y1="125.676" x2="580" y2="83.676"/>
+    <line x1="520" y1="131.081" x2="580" y2="89.081"/>
+    <line x1="520" y1="136.486" x2="580" y2="94.486"/>
+    <!-- Slab 4 internal cells (4 lines) -->
+    <line x1="520" y1="147.297" x2="580" y2="105.297"/>
+    <line x1="520" y1="152.703" x2="580" y2="110.703"/>
+    <line x1="520" y1="158.108" x2="580" y2="116.108"/>
+    <line x1="520" y1="163.514" x2="580" y2="121.514"/>
+    <!-- Slab 5 internal cells (14 lines) -->
+    <line x1="520" y1="174.324" x2="580" y2="132.324"/>
+    <line x1="520" y1="179.730" x2="580" y2="137.730"/>
+    <line x1="520" y1="185.135" x2="580" y2="143.135"/>
+    <line x1="520" y1="190.541" x2="580" y2="148.541"/>
+    <line x1="520" y1="195.946" x2="580" y2="153.946"/>
+    <line x1="520" y1="201.351" x2="580" y2="159.351"/>
+    <line x1="520" y1="206.757" x2="580" y2="164.757"/>
+    <line x1="520" y1="212.162" x2="580" y2="170.162"/>
+    <line x1="520" y1="217.568" x2="580" y2="175.568"/>
+    <line x1="520" y1="222.973" x2="580" y2="180.973"/>
+    <line x1="520" y1="228.378" x2="580" y2="186.378"/>
+    <line x1="520" y1="233.784" x2="580" y2="191.784"/>
+    <line x1="520" y1="239.189" x2="580" y2="197.189"/>
+    <line x1="520" y1="244.595" x2="580" y2="202.595"/>
   </g>
 
-  <!-- Time axis -->
-  <line x1="40" y1="170" x2="680" y2="170" stroke="#1a1614" stroke-width="1.2"/>
+  <!-- Z-chunk boundaries on right face (bold) -->
+  <line x1="540" y1="36" x2="540" y2="236" stroke="#7a1f64" stroke-width="1.2"/>
+  <line x1="560" y1="22" x2="560" y2="222" stroke="#7a1f64" stroke-width="1.2"/>
 
-  <g font-size="10" fill="#4a4440" font-family="ui-monospace, monospace" text-anchor="middle">
-    <line x1="40"  y1="166" x2="40"  y2="174" stroke="#1a1614"/>
-    <text x="40"  y="190">1980</text>
+  <!-- FRONT FACE: 5 stacked rectangles (one per pressure-level chunk), uniform light fill -->
+  <rect x="240" y="50"      width="280" height="43.243" fill="#fce7f3" fill-opacity="0.95" stroke="#7a1f64" stroke-width="1.2"/>
+  <rect x="240" y="93.243"  width="280" height="27.027" fill="#fce7f3" fill-opacity="0.95" stroke="#7a1f64" stroke-width="1.2"/>
+  <rect x="240" y="120.270" width="280" height="21.622" fill="#fce7f3" fill-opacity="0.95" stroke="#7a1f64" stroke-width="1.2"/>
+  <rect x="240" y="141.892" width="280" height="27.027" fill="#fce7f3" fill-opacity="0.95" stroke="#7a1f64" stroke-width="1.2"/>
+  <rect x="240" y="168.919" width="280" height="81.081" fill="#fce7f3" fill-opacity="0.95" stroke="#7a1f64" stroke-width="1.2"/>
 
-    <line x1="220" y1="166" x2="220" y2="174" stroke="#1a1614"/>
-    <text x="220" y="190">2000</text>
+  <!-- Front-face cell boundaries (light): 32 lines at internal pressure-cell boundaries -->
+  <g stroke="#7a1f64" stroke-width="0.5" opacity="0.4">
+    <!-- Slab 1: 7 internal lines -->
+    <line x1="240" y1="55.405"  x2="520" y2="55.405"/>
+    <line x1="240" y1="60.811"  x2="520" y2="60.811"/>
+    <line x1="240" y1="66.216"  x2="520" y2="66.216"/>
+    <line x1="240" y1="71.622"  x2="520" y2="71.622"/>
+    <line x1="240" y1="77.027"  x2="520" y2="77.027"/>
+    <line x1="240" y1="82.432"  x2="520" y2="82.432"/>
+    <line x1="240" y1="87.838"  x2="520" y2="87.838"/>
+    <!-- Slab 2: 4 internal lines -->
+    <line x1="240" y1="98.649"  x2="520" y2="98.649"/>
+    <line x1="240" y1="104.054" x2="520" y2="104.054"/>
+    <line x1="240" y1="109.459" x2="520" y2="109.459"/>
+    <line x1="240" y1="114.865" x2="520" y2="114.865"/>
+    <!-- Slab 3: 3 internal lines -->
+    <line x1="240" y1="125.676" x2="520" y2="125.676"/>
+    <line x1="240" y1="131.081" x2="520" y2="131.081"/>
+    <line x1="240" y1="136.486" x2="520" y2="136.486"/>
+    <!-- Slab 4: 4 internal lines -->
+    <line x1="240" y1="147.297" x2="520" y2="147.297"/>
+    <line x1="240" y1="152.703" x2="520" y2="152.703"/>
+    <line x1="240" y1="158.108" x2="520" y2="158.108"/>
+    <line x1="240" y1="163.514" x2="520" y2="163.514"/>
+    <!-- Slab 5: 14 internal lines -->
+    <line x1="240" y1="174.324" x2="520" y2="174.324"/>
+    <line x1="240" y1="179.730" x2="520" y2="179.730"/>
+    <line x1="240" y1="185.135" x2="520" y2="185.135"/>
+    <line x1="240" y1="190.541" x2="520" y2="190.541"/>
+    <line x1="240" y1="195.946" x2="520" y2="195.946"/>
+    <line x1="240" y1="201.351" x2="520" y2="201.351"/>
+    <line x1="240" y1="206.757" x2="520" y2="206.757"/>
+    <line x1="240" y1="212.162" x2="520" y2="212.162"/>
+    <line x1="240" y1="217.568" x2="520" y2="217.568"/>
+    <line x1="240" y1="222.973" x2="520" y2="222.973"/>
+    <line x1="240" y1="228.378" x2="520" y2="228.378"/>
+    <line x1="240" y1="233.784" x2="520" y2="233.784"/>
+    <line x1="240" y1="239.189" x2="520" y2="239.189"/>
+    <line x1="240" y1="244.595" x2="520" y2="244.595"/>
+  </g>
 
-    <line x1="340" y1="166" x2="340" y2="174" stroke="#1a1614"/>
-    <text x="340" y="190">2010</text>
+  <!-- Pressure axis (left of cube) -->
+  <line x1="220" y1="50" x2="220" y2="250" stroke="#1a1614" stroke-width="1.2"/>
+  <g font-size="10" fill="#4a4440" font-family="ui-monospace, monospace" text-anchor="end">
+    <line x1="216" y1="50"      x2="224" y2="50"      stroke="#1a1614"/>
+    <text x="212" y="53">1000 hPa</text>
+    <line x1="216" y1="93.243"  x2="224" y2="93.243"  stroke="#1a1614"/>
+    <text x="212" y="96.243">800</text>
+    <line x1="216" y1="120.270" x2="224" y2="120.270" stroke="#1a1614"/>
+    <text x="212" y="123.270">600</text>
+    <line x1="216" y1="141.892" x2="224" y2="141.892" stroke="#1a1614"/>
+    <text x="212" y="144.892">400</text>
+    <line x1="216" y1="168.919" x2="224" y2="168.919" stroke="#1a1614"/>
+    <text x="212" y="171.919">200</text>
+    <line x1="216" y1="250"     x2="224" y2="250"     stroke="#1a1614"/>
+    <text x="212" y="253">1</text>
+  </g>
 
-    <line x1="420" y1="166" x2="420" y2="174" stroke="#1a1614"/>
-    <text x="420" y="190">2020</text>
+  <!-- Vertical axis label -->
+  <text x="142" y="150" font-size="10" fill="#9a9490" font-weight="700" letter-spacing="0.08em" transform="rotate(-90, 142, 150)" text-anchor="middle">PRESSURE LEVEL</text>
 
-    <line x1="564" y1="166" x2="564" y2="174" stroke="#1a1614"/>
-    <text x="564" y="190">2024</text>
-
-    <line x1="684" y1="166" x2="684" y2="174" stroke="#1a1614"/>
-    <text x="684" y="190">2026</text>
+  <!-- "lat × lon" hint on the right face -->
+  <text x="640" y="125" font-size="10" fill="#9a9490" font-style="italic" text-anchor="middle" transform="rotate(-35, 640, 125)">lat × lon</text>
   </g>
 
   <!-- Bottom annotations -->
-  <text x="100" y="240" font-size="11" fill="#9a9490" font-style="italic">few wide chunks (rarely accessed)</text>
-  <text x="620" y="240" text-anchor="end" font-size="11" fill="#c93d80" font-style="italic">many narrow chunks (active research)</text>
-
-  <!-- Arrow pointing to "fine" side -->
-  <g transform="translate(330, 270)">
-    <text x="0" y="0" font-size="10" fill="#4a4440" font-family="ui-monospace, monospace">chunks=(20yr, 10yr, 10yr, 1yr×3, 1mo×24, …)</text>
-  </g>
+  <text x="360" y="298" text-anchor="middle" font-size="11" fill="#9a9490" font-style="italic">37 cells along the pressure axis · 5 chunks · ΔP = 200 hPa each</text>
+  <text x="360" y="314" text-anchor="middle" font-size="10" fill="#4a4440" font-family="ui-monospace, monospace">chunks=(8, 5, 4, 5, 15)</text>
 </svg>
