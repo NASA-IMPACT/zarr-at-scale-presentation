@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: 'Zarr at Scale',
   description: "What's new in Zarr: working with multi-terabyte Earth-science datasets is now routine.",
-  base: '/',
+  base: '/zarr-at-scale-presentation/',
   cleanUrls: true,
   themeConfig: {
     nav: [
