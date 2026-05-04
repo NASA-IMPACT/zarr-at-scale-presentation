@@ -52,3 +52,7 @@ This site is the companion to the EGU 2026 poster **Zarr at scale: virtualizatio
 ## Citation
 
 > Jones, M., Hamman, J., Bennett, D., Barron, K., and Magin, J.: Zarr at scale: virtualization, sharding, and performance optimizations for Earth science data, EGU General Assembly 2026, Vienna, Austria, 3–8 May 2026, EGU26-15196, https://doi.org/10.5194/egusphere-egu26-15196, 2026.
+
+## Acknowledgments
+
+Max Jones' Zarr contributions were supported by the Data Systems Evolution (DSE) team at NASA Marshall Space Flight Center's Office of Data Science and Informatics (ODSI). DSE enables scientific exploration and discovery through innovative data visualization techniques and analysis capabilities that lower the barrier to entry for cloud-hosted data.
